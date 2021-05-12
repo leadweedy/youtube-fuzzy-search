@@ -62,11 +62,10 @@ new_filename = new_filename + extension
 
 ## youtube fuzzy search code ---------------------------------------------
 
-data_length = search_data.size-1
 # iterate for each value
-for i in range(0, data_length):
+for i in range(0, len(search_data)):
     # update status
-    print('Working on ' + str(i) + '/' + str(data_length))
+    print('Working on ' + str(i) + '/' + str(len(search_data)-1))
     # encode search query in utf8 so urllib doesnt break
     search_term = urllib.parse.quote(search_data.iloc[i], encoding='utf-8')
     # appends search term to end of youtube search url
