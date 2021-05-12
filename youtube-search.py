@@ -67,12 +67,16 @@ new_filename = new_filename + extension
 ## youtube fuzzy search code ---------------------------------------------
 
 # check if start is empty, default to 0
-if not start_element:
+if start_element:
+    start_element = int(start_element)
+else: 
     start_element = 0
 # if end is empty, default to end of array
-if not end_element:
+if end_element:
+    end_element = int(end_element)
+else: 
     end_element = len(search_data)
-    
+
 # iterate for each value
 for i in range(start_element, end_element):
     # update status
