@@ -92,6 +92,7 @@ for i in range(start_element, end_element):
     # retry if getting match fails
     while not video_id:
         print('Retrying ' + str(i) + '/' + str(len(search_data)-1))
+        time.sleep(0.1)
         html = urllib.request.urlopen(new_url)
         video_id = re.search(r"watch\?v=(\S{11})", html.read().decode())
     # generate full video url using id
