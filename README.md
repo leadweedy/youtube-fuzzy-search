@@ -5,6 +5,7 @@ You give it search inputs in the form of a csv file, and it outputs a text file 
 # Features
 - Supports non-ASCII characters
 - Supports any number of CSV columns as input
+- Configurable start and end elements
 
 # Requirements
 - Built for Python 3.9 (other versions untested)
