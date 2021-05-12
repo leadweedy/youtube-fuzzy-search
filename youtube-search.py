@@ -14,6 +14,8 @@ import urllib.request
 import pandas
 import re
 import os
+import random
+import time
 from configparser import ConfigParser
 
 
@@ -80,6 +82,8 @@ for i in range(0, len(search_data)):
     with open(new_filename, 'a') as f:
         f.write(video_url)
         f.write('\n')
+    # random delay between requests (max 1 second)
+    time.sleep(random.random())
 
 
 ## cleanup ---------------------------------------------------------------
