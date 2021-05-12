@@ -29,6 +29,10 @@ config_object.read("config.ini")
 csv_data = config_object['CSV DATA']
 csv_name = csv_data['file_name']
 csv_columns = csv_data['column(s)']
+start_element = csv_data['start']
+# check if element is empty, default to 0
+if not start_element:
+    start_element = 0
 # split columns into array and strip leading/trailing spaces
 columns = csv_columns.split(',')
 columns = [i.lstrip().rstrip() for i in columns]
