@@ -89,6 +89,11 @@ for i in range(start_element, end_element):
     html = urllib.request.urlopen(new_url)
     # regex match the first video id from search results
     video_id = re.search(r"watch\?v=(\S{11})", html.read().decode())
+    # retry if getting match fails
+    while not video_id:
+        print('Retrying ' + str(i) + '/' + str(len(search_data)-1))
+        html = urllib.request.urlopen(new_url)
+        video_id = re.search(r"watch\?v=(\S{11})", html.read().decode())
     # generate full video url using id
     video_url = video_begin + video_id.group(1)
     # append video url to file
@@ -96,7 +101,7 @@ for i in range(start_element, end_element):
         f.write(video_url)
         f.write('\n')
     # random delay between requests (max 1 second)
-    time.sleep(random.random())
+    # time.sleep(random.random())
 
 
 ## cleanup ---------------------------------------------------------------
