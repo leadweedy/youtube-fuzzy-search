@@ -30,9 +30,7 @@ csv_data = config_object['CSV DATA']
 csv_name = csv_data['file_name']
 csv_columns = csv_data['column(s)']
 start_element = csv_data['start']
-# check if element is empty, default to 0
-if not start_element:
-    start_element = 0
+end_element = csv_data['end']
 # split columns into array and strip leading/trailing spaces
 columns = csv_columns.split(',')
 columns = [i.lstrip().rstrip() for i in columns]
@@ -68,8 +66,15 @@ new_filename = new_filename + extension
 
 ## youtube fuzzy search code ---------------------------------------------
 
+# check if start is empty, default to 0
+if not start_element:
+    start_element = 0
+# if end is empty, default to end of array
+if not end_element:
+    end_element = len(search_data)
+    
 # iterate for each value
-for i in range(0, len(search_data)):
+for i in range(start_element, end_element):
     # update status
     print('Working on ' + str(i) + '/' + str(len(search_data)-1))
     # encode search query in utf8 so urllib doesnt break
